@@ -4,7 +4,26 @@ class Home extends Component {
 
 	constructor() {
 		super();
-		this.state = {};
+		this.state = {
+			search: '',
+			fireRedirect: false
+		};
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+	}
+
+	handleChange(evt) {
+		this.setState({
+			search: evt.target.value
+		});
+	}
+
+	handleSubmit(evt) {
+		evt.preventDefault();
+		// do some redux thing
+		this.setState({
+			fireRedirect: true
+		});
 	}
 
 	render() {
@@ -15,7 +34,7 @@ class Home extends Component {
 						<lable>What gif would ya like to see?</lable>
 						<input
 							type='text'
-							name='name'
+							name='search'
 							value={this.state.name}
 							onChange={this.handleChange}
 						/>
@@ -24,6 +43,10 @@ class Home extends Component {
 						</span>
 					</div>
 				</form>
+				{/* {this.state.fireRedirect && (
+					<Redirect to='/' />
+				)}
+				*/}
 			</div>
 		)
 	}
