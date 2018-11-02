@@ -1,29 +1,25 @@
 import React, { Component } from 'react';
 // import { Redirect } from 'react-router';
-import store from '../store';
+import { connect } from 'react-redux';
 
 
 class Gifs extends Component {
 
 	constructor() {
 		super();
-		this.state = store.getState();
+		this.state = {
+			
+		};
+
 	}
 
-	componentDidMount() {
-		this.unsubscribe = store.subscribe(() => {
-			this.setState(store.getState());
-		})
-	}
-
-	componentWillUnmount() {
-		this.unsubscribe();
-	}
 
 
 	render() {
-
-		const urls = this.state.urls;
+		console.log('this.props.urls', this.props.urls);
+		const urls = this.props.urls;
+		// create save to favorite button
+		// thunk the saves to the store
 
 		return (
 			<div>
@@ -46,4 +42,19 @@ class Gifs extends Component {
 }
 
 
-export default Gifs;
+
+const mapState = (state) => {
+	console.log('state', state);
+	return {
+		urls: state.urls
+	}
+}
+
+
+const mapDispatch = (dispatch) => {
+	return {
+
+	}
+}
+
+export default connect(mapState, mapDispatch)(Gifs);

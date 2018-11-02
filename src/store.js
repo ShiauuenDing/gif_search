@@ -4,7 +4,8 @@ import thunkMiddleware from 'redux-thunk';
 import axios from 'axios';
 
 const initialState = {
-	urls: []
+	urls: [],
+	favorites: []
 };
 
 
