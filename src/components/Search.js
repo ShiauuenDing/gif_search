@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Redirect } from 'react-router';
-import { connect } from 'react-redux';
+import store, { dispatchGifSearch } from '../store';
 
-import store, { dispatchGifsData } from '../store';
 
 class Search extends Component {
 
@@ -25,16 +23,7 @@ class Search extends Component {
 
 	handleSubmit(evt) {
 		evt.preventDefault();
-		let data;
-		axios.get('https://api.giphy.com/v1/gifs/search?q=' + this.state.search + '&api_key=GZKGwdu6xlIM0iV58yFKJOFLqj0NLXFw&limit=5')
-			.then(res => {
-				data = res.data.data;
-				console.log(data);
-				})
-			.catch(err => {
-				console.log('Error fetching data', err);
-				})
-
+		store.dispatch(dispatchGifSearch(this.state.search));
 		this.setState({
 			fireRedirect: true
 		});
@@ -68,17 +57,19 @@ class Search extends Component {
 	}
 }
 
-const mapState = (state) => {
-	console.log(state);
-	return {
-		
-	}
-}
+export default Search;
 
-const mapDispatch = (dispatch) => {
-	return {
-		gifs_data: () => dispatch(dispatchGifsData())
-	}
-}
+// const mapState = (state) => {
+// 	console.log(state);
+// 	return {
 
-export default connect(mapState, mapDispatch)(Search);
+// 	}
+// }
+
+// const mapDispatch = (dispatch) => {
+// 	return {
+// 		gifs_search: () => dispatch(dispatchGifsSearch())
+// 	}
+// }
+
+// export default connect(mapState, mapDispatch)(Search);
