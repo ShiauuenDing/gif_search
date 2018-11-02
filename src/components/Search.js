@@ -29,6 +29,7 @@ class Search extends Component {
 		});
 	}
 
+	// send "kitten" when empty form is submitted
 
 	render() {
 		return (
@@ -43,11 +44,11 @@ class Search extends Component {
 							onChange={this.handleChange}
 						/>
 					</div>
-					<div>
+					{/*<div>
 						<span className='input-group-btn'>
 							<button type='submit'>Send!</button>
 						</span>
-					</div>
+					</div>*/}
 				</form>
 				{this.state.fireRedirect && (
 					<Redirect to='/gifs' />

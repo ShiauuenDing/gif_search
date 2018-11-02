@@ -11,10 +11,12 @@ const initialState = {
 
 // actions
 const PUT_URLS = 'PUT_URLS';
+const ADD_FAVORITE = 'ADD_FAVORITE';
 
 
 // action creators
-const putUrls = (urls) => ({ type: PUT_URLS, urls: urls });
+const putUrls = (urls) => ({ type: PUT_URLS, urls });
+const addFavorite = (fav) => ({ type: ADD_FAVORITE, fav });
 
 
 
@@ -39,6 +41,10 @@ const putGifUrls = (data) => {
 	return urls;
 }
 
+export const dispatchAddFavorite = (fav) => (dispatch) => {
+	dispatch(addFavorite(fav));
+}
+
 
 //reducer
 function reducer(state = initialState, action) {
@@ -46,6 +52,8 @@ function reducer(state = initialState, action) {
 	switch(action.type) {
 		case PUT_URLS:
 			return { urls: action.urls };
+		case ADD_FAVORITE:
+			return Object.assign( {}, state, state.favorites: action.fav );
 		default:
 			return state;
 	}
