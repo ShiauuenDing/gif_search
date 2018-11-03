@@ -31,13 +31,10 @@ export const dispatchGifSearch = (search) => (dispatch) => {
 }
 
 const putGifUrls = (data) => {
-	let idCounter = 0;
-	const urls = data.map(d => d.images.fixed_height.url).map(url => {
-			idCounter++;
+	return data.map(d => d.images.fixed_height.url).map(url => {
 			let i = url.indexOf('?');
-			return {id: idCounter, u: url.slice(0, i)};
+			return url.slice(0, i);
 		});
-	return urls;
 }
 
 export const dispatchAddFavorite = (fav) => (dispatch) => {
@@ -47,25 +44,22 @@ export const dispatchAddFavorite = (fav) => (dispatch) => {
 
 //reducer
 function reducer(state = initialState, action) {
-	console.log(action);
-	console.log(state);
 	switch(action.type) {
 		case PUT_URLS:
 			return Object.assign( {}, state, { urls: action.urls } );
 		case ADD_FAVORITE:
-			return Object.assign( {}, state, { favorites: [action.fav, ...state.favorites] } );
-			// return checkDuplicateAndUpdate(state.favorites, action.fav, state);
+			return checkDuplicateAndUpdate(state, action.fav);
 		default:
 			return state;
 	}
 }
 
-const checkDuplicateAndUpdate = (allFavs, newFav, state) => {
-	console.log('check an update', allFavs, newFav);
-	if(!allFavs.includes(newFav)) {
-		allFavs.push(newFav);
+const checkDuplicateAndUpdate = (state, newFav) => {
+	if(state.favorites.includes(newFav)) {
+		return state;
+	} else {
+		return Object.assign( {}, state, { favorites: [newFav, ...state.favorites] } );
 	}
-	return Object.assign( {}, state, {favorites: allFavs} );
 }
 
 

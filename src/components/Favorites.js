@@ -12,7 +12,7 @@ class Favorites extends Component {
 			<div>
 				{
 					favs.map(fav => (
-						<div>
+						<div key={fav}>
 							<img src={fav} alt='' />
 						</div>
 					))

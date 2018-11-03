@@ -45,10 +45,10 @@ class Gifs extends Component {
 			<div>
 				{
 					urls.map(url => (
-						<div key={url.id}>
-							<img src={url.u} alt='' />
+						<div key={url}>
+							<img src={url} alt='' />
 							<span className='input-group-btn'>
-							 	<button onClick={this.handleClick.bind(this, url.u)}>Add</button>
+							 	<button onClick={this.handleClick.bind(this, url)}>Add</button>
 							</span>
 						</div>
 					))

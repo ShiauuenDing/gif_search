@@ -9,8 +9,10 @@ class Search extends Component {
 		super();
 		this.state = {
 			search: '',
-			fireRedirect: false
+			redirect: false
 		};
+		this.setRedirect = this.setRedirect.bind(this);
+		this.renderRedirect = this.renderRedirect.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
@@ -24,9 +26,22 @@ class Search extends Component {
 	handleSubmit(evt) {
 		evt.preventDefault();
 		store.dispatch(dispatchGifSearch(this.state.search));
+		// this.setState({
+		// 	redirect: true
+		// });
+		this.setRedirect();
+	}
+
+	setRedirect() {
 		this.setState({
-			fireRedirect: true
+			redirect: true
 		});
+	}
+
+	renderRedirect() {
+		if(this.state.redirect) {
+			return <Redirect to='/gifs' />
+		}
 	}
 
 	// send "kitten" when empty form is submitted
@@ -34,6 +49,7 @@ class Search extends Component {
 	render() {
 		return (
 			<div>
+				{this.renderRedirect()}
 				<form id='gif_search_form' onSubmit={this.handleSubmit}>
 					<div>
 						<label>What gifs would ya like to see?</label>
@@ -45,15 +61,7 @@ class Search extends Component {
 							onChange={this.handleChange}
 						/>
 					</div>
-					{/*<div>
-						<span className='input-group-btn'>
-							<button type='submit'>Send!</button>
-						</span>
-					</div>*/}
 				</form>
-				{this.state.fireRedirect && (
-					<Redirect to='/gifs' />
-				)}
 			</div>
 		)
 	}
