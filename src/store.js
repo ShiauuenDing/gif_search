@@ -26,7 +26,6 @@ export const dispatchGifSearch = (search) => (dispatch) => {
 		.then(res => res.data.data)
 		.then(gifsData => {
 			const gifUrls = putGifUrls(gifsData);
-			// console.log(gifUrls);
 			dispatch(putUrls(gifUrls));
 		})
 }
@@ -49,14 +48,24 @@ export const dispatchAddFavorite = (fav) => (dispatch) => {
 //reducer
 function reducer(state = initialState, action) {
 	console.log(action);
+	console.log(state);
 	switch(action.type) {
 		case PUT_URLS:
-			return { urls: action.urls };
+			return Object.assign( {}, state, { urls: action.urls } );
 		case ADD_FAVORITE:
-			return Object.assign( {}, state, state.favorites: action.fav );
+			return Object.assign( {}, state, { favorites: [action.fav, ...state.favorites] } );
+			// return checkDuplicateAndUpdate(state.favorites, action.fav, state);
 		default:
 			return state;
 	}
+}
+
+const checkDuplicateAndUpdate = (allFavs, newFav, state) => {
+	console.log('check an update', allFavs, newFav);
+	if(!allFavs.includes(newFav)) {
+		allFavs.push(newFav);
+	}
+	return Object.assign( {}, state, {favorites: allFavs} );
 }
 
 

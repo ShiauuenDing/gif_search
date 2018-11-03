@@ -37,6 +37,7 @@ class Search extends Component {
 				<form id='gif_search_form' onSubmit={this.handleSubmit}>
 					<div>
 						<label>What gifs would ya like to see?</label>
+						<br/>
 						<input
 							type='text'
 							name='search'

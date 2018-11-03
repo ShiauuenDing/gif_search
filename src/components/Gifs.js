@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { dispatchAddFavorite } from '../store';
+import { Redirect } from 'react-router';
+
 
 
 
@@ -10,47 +12,53 @@ class Gifs extends Component {
 		super();
 		this.state = {
 			items: [],
-			fireRedirect: false
+			redirect: false
 		};
-		this.handleSubmit = this.handleSubmit.bind(this);
+		this.setRedirect = this.setRedirect.bind(this);
+		this.renderRedirect = this.renderRedirect.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
 
+	setRedirect() {
+		this.setState({
+			redirect: true
+		});
+	}
 
-	handleSubmit(evt) {
-		console.log('handleSubmit evt.target.value', evt.target.value);
-		evt.preventDefault();
-		// this.setState({
-		// 	fireRedirect: true
-		// });
+	renderRedirect() {
+		if(this.state.redirect) {
+			return <Redirect to='/favorites' />
+		}
+	}
+
+	handleClick(url, e) {
+		this.props.add_favorite(url);
 	}
 
 
 
 	render() {
-		console.log('this.props', this.props);
 		const urls = this.props.urls;
-		// create save to favorite button
-		// thunk the saves to the store
-
+		console.log('favorites in Gifs', this.props.favorites);
 
 		return (
 			<div>
-
-			{
-				urls.map(url => (
-					<div key={url.id}>
-						<form id='add_to_favorite' onSubmit={this.handleSubmit}>
+				{
+					urls.map(url => (
+						<div key={url.id}>
 							<img src={url.u} alt='' />
 							<span className='input-group-btn'>
-							 	<button type='submit'>Add to Favorites</button>
+							 	<button onClick={this.handleClick.bind(this, url.u)}>Add</button>
 							</span>
-						</form>
-					</div>
-				))
+						</div>
+					))
+				}
+				<div>
+					{this.renderRedirect()}
+					<button onClick={this.setRedirect}>Favorites</button>
+				</div>
 
-			}
 			</div>
-
 		);
 	}
 
@@ -65,7 +73,6 @@ const mapState = (state) => {
 		favorites: state.favorites
 	}
 }
-
 
 const mapDispatch = (dispatch) => {
 	return {
