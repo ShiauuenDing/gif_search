@@ -3,6 +3,7 @@ import logginMiddleware from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import axios from 'axios';
 
+
 const initialState = {
 	urls: [],
 	favorites: []
@@ -17,7 +18,6 @@ const ADD_FAVORITE = 'ADD_FAVORITE';
 // action creators
 const putUrls = (urls) => ({ type: PUT_URLS, urls });
 const addFavorite = (fav) => ({ type: ADD_FAVORITE, fav });
-
 
 
 // thunk creators

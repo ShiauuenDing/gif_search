@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { dispatchAddFavorite } from '../store';
 import { Redirect } from 'react-router';
-
-
+import { dispatchAddFavorite } from '../store';
 
 
 class Gifs extends Component {
@@ -11,7 +9,6 @@ class Gifs extends Component {
 	constructor() {
 		super();
 		this.state = {
-			items: [],
 			redirect: false
 		};
 		this.setRedirect = this.setRedirect.bind(this);
@@ -39,8 +36,6 @@ class Gifs extends Component {
 
 	render() {
 		const urls = this.props.urls;
-		console.log('favorites in Gifs', this.props.favorites);
-
 		return (
 			<div>
 				{
@@ -66,18 +61,16 @@ class Gifs extends Component {
 
 
 
-const mapState = (state) => {
-	console.log('state', state);
+const mapStateToProps = (state) => {
 	return {
 		urls: state.urls,
-		favorites: state.favorites
 	}
 }
 
-const mapDispatch = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
 	return {
 		add_favorite: (fav) => dispatch(dispatchAddFavorite(fav))
 	}
 }
 
-export default connect(mapState, mapDispatch)(Gifs);
+export default connect(mapStateToProps, mapDispatchToProps)(Gifs);

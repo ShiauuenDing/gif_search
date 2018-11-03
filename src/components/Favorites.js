@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 
-
-
 class Favorites extends Component {
 
 	render() {
@@ -20,22 +18,13 @@ class Favorites extends Component {
 			</div>
 		)
 	}
-
 }
 
 
-const mapState = (state) => {
-	console.log('state at Favorites', state);
+const mapStateToProps = (state) => {
 	return {
-		urls: state.urls,
 		favorites: state.favorites
 	}
 }
 
-const mapDispatch = (dispatch) => {
-	return {
-		
-	}
-}
-
-export default connect(mapState, mapDispatch)(Favorites);
+export default connect(mapStateToProps)(Favorites);
