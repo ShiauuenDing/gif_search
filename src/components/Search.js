@@ -33,6 +33,7 @@ class Search extends Component {
 	// send "kitten" when empty form is submitted or api return no gifs
 
 	render() {
+		console.log('this.props', this.props);
 		return (
 			<div>
 				<form id='gif_search_form' onSubmit={this.handleSubmit}>
@@ -48,7 +49,7 @@ class Search extends Component {
 					</div>
 				</form>
         {this.state.redirect && (
-          <Redirect to="/gifs" />
+          <Redirect push to="/gifs" />
         )}
 			</div>
 		)

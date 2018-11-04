@@ -24,14 +24,13 @@ class Gifs extends Component {
 
 	renderRedirect() {
 		if(this.state.redirect) {
-			return <Redirect to='/favorites' />
+			return <Redirect push to='/favorites' />
 		}
 	}
 
 	handleClick(url, e) {
 		this.props.add_favorite(url);
 	}
-
 
 
 	render() {
@@ -42,7 +41,7 @@ class Gifs extends Component {
 					urls.map(url => (
 						<div key={url}>
 							<img src={url} alt='' />
-							<span className='input-group-btn'>
+							<span>
 							 	<button onClick={this.handleClick.bind(this, url)}>Add</button>
 							</span>
 						</div>
@@ -52,13 +51,11 @@ class Gifs extends Component {
 					{this.renderRedirect()}
 					<button onClick={this.setRedirect}>Favorites</button>
 				</div>
-
 			</div>
 		);
 	}
 
 }
-
 
 
 const mapStateToProps = (state) => {
