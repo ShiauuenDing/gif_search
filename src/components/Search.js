@@ -9,7 +9,6 @@ class Search extends Component {
 		super();
 		this.state = {
 			search: '',
-			redirect: false
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,16 +23,13 @@ class Search extends Component {
 	handleSubmit(evt) {
 		evt.preventDefault();
 		store.dispatch(dispatchGifSearch(this.state.search));
-		this.setState({
-			redirect: true
-		});
+		this.props.history.push('/gifs');
 	}
 
 
 	// send "kitten" when empty form is submitted or api return no gifs
 
 	render() {
-		console.log('this.props', this.props);
 		return (
 			<div>
 				<form id='gif_search_form' onSubmit={this.handleSubmit}>
@@ -48,9 +44,6 @@ class Search extends Component {
 						/>
 					</div>
 				</form>
-        {this.state.redirect && (
-          <Redirect push to="/gifs" />
-        )}
 			</div>
 		)
 	}
