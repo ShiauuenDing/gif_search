@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router';
 import store, { dispatchGifSearch } from '../store';
 
 
@@ -27,6 +26,8 @@ class Search extends Component {
 	}
 
 
+	// write tests
+	// search term persists in form
 	// send "kitten" when empty form is submitted or api return no gifs
 
 	render() {

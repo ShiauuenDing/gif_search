@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Search } from './';
 
 class Navbar extends Component {
 
 	render() {
 		return (
-			<div>something</div>
+			<div>< Search /></div>
 		)
 	}
 
