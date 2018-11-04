@@ -8,26 +8,13 @@ class Gifs extends Component {
 
 	constructor() {
 		super();
-		// this.state = {
-		// 	redirect: false
-		// };
 		this.setRedirect = this.setRedirect.bind(this);
-		// this.renderRedirect = this.renderRedirect.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 	}
 
 	setRedirect() {
-		// this.setState({
-		// 	redirect: true
-		// });
 		this.props.history.push('/favorites');
 	}
-
-	// renderRedirect() {
-	// 	if(this.state.redirect) {
-	// 		return <Redirect push to='/favorites' />
-	// 	}
-	// }
 
 	handleClick(url, e) {
 		this.props.add_favorite(url);
@@ -49,7 +36,6 @@ class Gifs extends Component {
 					))
 				}
 				<div>
-					{/*{this.renderRedirect()}*/}
 					<button onClick={this.setRedirect}>Favorites</button>
 				</div>
 			</div>

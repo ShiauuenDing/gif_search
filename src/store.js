@@ -43,7 +43,7 @@ export const dispatchAddFavorite = (fav) => (dispatch) => {
 
 
 //reducer
-function reducer(state = initialState, action) {
+const reducer = (state = initialState, action) => {
 	switch(action.type) {
 		case PUT_URLS:
 			return Object.assign( {}, state, { urls: action.urls } );
