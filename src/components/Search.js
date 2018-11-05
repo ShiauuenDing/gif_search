@@ -24,7 +24,7 @@ class Search extends Component {
 
 	handleSubmit(evt) {
 		evt.preventDefault();
-		this.props.update_search_term(this.state.search);
+		this.props.update_search_term(this.state.changed ? this.state.search : this.props.search_term);
 		this.props.history.push('/gifs');
 	}
 
