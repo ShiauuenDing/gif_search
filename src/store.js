@@ -32,7 +32,7 @@ export const dispatchSearchTerm = (search_term) => (dispatch) => {
 }
 
 export const dispatchGifSearch = (search) => (dispatch) => {
-	axios.get('https://api.giphy.com/v1/gifs/search?q=' + search + '&api_key=GZKGwdu6xlIM0iV58yFKJOFLqj0NLXFw&limit=6')
+	axios.get('https://api.giphy.com/v1/gifs/search?q=' + search + '&api_key=GZKGwdu6xlIM0iV58yFKJOFLqj0NLXFw&limit=10')
 		.then(res => res.data.data)
 		.then(gifsData => {
 			const gifUrls = putGifUrls(gifsData);
