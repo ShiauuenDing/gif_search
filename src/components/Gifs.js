@@ -24,7 +24,7 @@ class Gifs extends Component {
 		return (
 			<div>
 				<div>
-					<button  className='navbutton' onClick={this.setRedirect}>Favorites</button>
+					<button className='navbutton' onClick={this.setRedirect}>Favorites</button>
 				</div>
 				<div className='box'>
 				{

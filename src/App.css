@@ -27,8 +27,12 @@
 .navbutton {
   font-size: 20px;
   margin: 40px;
+  background: maroon;
+  border-color: olive;
 }
 
 button {
   margin: 10px;
+  background-color: #0B5345;
+  border-color: grey;
 }

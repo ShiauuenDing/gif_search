@@ -19,16 +19,18 @@ class Favorites extends Component {
 		const favs = this.props.favorites;
 		return (
 			<div>
-				<span>
-				 	<button onClick={this.handleClick}>Clear favorites</button>
-				</span>
+				<div>
+					<button className='navbutton' onClick={this.handleClick}>Clear favorites</button>
+				</div>
+				<div className='box'>
 				{
 					favs.map(fav => (
-						<div key={fav}>
+						<div key={fav} className='gifbox'>
 							<img src={fav} alt='' />
 						</div>
 					))
 				}
+				</div>
 			</div>
 		)
 	}
