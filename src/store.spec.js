@@ -1,26 +1,35 @@
-// import * as actions from '../../actions/TodoActions'
-// import * as types from '../../constants/ActionTypes'
-// ​
-// describe('actions', () => {
-//   it('should create an action to add a todo', () => {
-//     const text = 'Finish docs'
-//     const expectedAction = {
-//       type: types.ADD_TODO,
-//       text
-//     }
-//     expect(actions.addTodo(text)).toEqual(expectedAction)
-//   })
-// })
-
 import * as my_store from './store';
 
+// action creator tests
 describe('actions', () => {
-	it('updates search term to kittens', () => {
+	it('updates the search term', () => {
 		const search_term = 'kittens';
 		const expectedAction = {
 			type: my_store.UPDATE_SEARCH_TERM,
 			search_term
 		};
-		expect(my_store.updateSearchTerm(search_term)).toEqual(expectedAction)
+		expect(my_store.updateSearchTerm(search_term)).toEqual(expectedAction);
+	})
+
+	it('updates urls', () => {
+		const urls = ['url1', 'url2'];
+		const expectedAction = {
+			type: my_store.PUT_URLS,
+			urls
+		};
+		expect(my_store.putUrls(urls)).toEqual(expectedAction);
+	})
+
+	it('adds the url of a favorite GIF', () => {
+		const fav = ['my_fav'];
+		const expectedAction = {
+			type: my_store.ADD_FAVORITE,
+			fav
+		};
+		expect(my_store.addFavorite(fav)).toEqual(expectedAction);
 	})
 })
+
+
+
+// TODO: Add tests for thunks.
