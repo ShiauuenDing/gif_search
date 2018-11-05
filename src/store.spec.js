@@ -11,3 +11,16 @@
 //     expect(actions.addTodo(text)).toEqual(expectedAction)
 //   })
 // })
+
+import * as my_store from './store';
+
+describe('actions', () => {
+	it('updates search term to kittens', () => {
+		const search_term = 'kittens';
+		const expectedAction = {
+			type: my_store.UPDATE_SEARCH_TERM,
+			search_term
+		};
+		expect(my_store.updateSearchTerm(search_term)).toEqual(expectedAction)
+	})
+})

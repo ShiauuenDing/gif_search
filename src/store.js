@@ -12,15 +12,15 @@ const initialState = {
 
 
 // actions
-const UPDATE_SEARCH_TERM = 'UPDATE_SEARCH_TERM';
-const PUT_URLS = 'PUT_URLS';
-const ADD_FAVORITE = 'ADD_FAVORITE';
+export const UPDATE_SEARCH_TERM = 'UPDATE_SEARCH_TERM';
+export const PUT_URLS = 'PUT_URLS';
+export const ADD_FAVORITE = 'ADD_FAVORITE';
 
 
 // action creators
-const updateSearchTerm = (search_term) => ({ type: UPDATE_SEARCH_TERM, search_term });
-const putUrls = (urls) => ({ type: PUT_URLS, urls });
-const addFavorite = (fav) => ({ type: ADD_FAVORITE, fav });
+export const updateSearchTerm = (search_term) => ({ type: UPDATE_SEARCH_TERM, search_term });
+export const putUrls = (urls) => ({ type: PUT_URLS, urls });
+export const addFavorite = (fav) => ({ type: ADD_FAVORITE, fav });
 
 
 // thunk creators
