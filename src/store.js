@@ -15,12 +15,14 @@ const initialState = {
 export const UPDATE_SEARCH_TERM = 'UPDATE_SEARCH_TERM';
 export const PUT_URLS = 'PUT_URLS';
 export const ADD_FAVORITE = 'ADD_FAVORITE';
+export const CLEAR_FAVORITES = 'CLEAR_FAVORITES';
 
 
 // action creators
 export const updateSearchTerm = (search_term) => ({ type: UPDATE_SEARCH_TERM, search_term });
 export const putUrls = (urls) => ({ type: PUT_URLS, urls });
 export const addFavorite = (fav) => ({ type: ADD_FAVORITE, fav });
+export const clearFavorites = () => ({ type: CLEAR_FAVORITES });
 
 
 // thunk creators
@@ -49,6 +51,10 @@ export const dispatchAddFavorite = (fav) => (dispatch) => {
 	dispatch(addFavorite(fav));
 }
 
+export const dispatchClearFavorites = () => (dispatch) => {
+	dispatch(clearFavorites());
+}
+
 
 //reducer
 const reducer = (state = initialState, action) => {
@@ -59,6 +65,8 @@ const reducer = (state = initialState, action) => {
 			return Object.assign( {}, state, { urls: action.urls } );
 		case ADD_FAVORITE:
 			return checkDuplicateAndUpdate(state, action.fav);
+		case CLEAR_FAVORITES:
+			return Object.assign( {}, state, { favorites: [] });
 		default:
 			return state;
 	}

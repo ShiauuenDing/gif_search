@@ -28,6 +28,13 @@ describe('actions', () => {
 		};
 		expect(my_store.addFavorite(fav)).toEqual(expectedAction);
 	})
+
+	it('clears all favorite GIFs', () => {
+		const expectedAction = {
+			type: my_store.CLEAR_FAVORITES,
+		};
+		expect(my_store.clearFavorites()).toEqual(expectedAction);
+	})
 })
 
 
