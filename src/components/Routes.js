@@ -4,7 +4,6 @@ import { Redirect } from 'react-router';
 import { Search, Gifs, Favorites } from './';
 
 
-
 class Routes extends Component {
 
 	render() {

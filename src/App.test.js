@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './components/';
-import store from './store';
 import { Provider } from 'react-redux';
-import history from './history';
 import { Router } from 'react-router-dom';
+import store from './store';
+import history from './history';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');

@@ -42,6 +42,7 @@ export const dispatchGifSearch = (search) => (dispatch) => {
 
 const putGifUrls = (data) => {
 	return data.map(d => d.images.fixed_height.url).map(url => {
+			// extract usable url info
 			let i = url.indexOf('?');
 			return url.slice(0, i);
 		});

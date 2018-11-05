@@ -19,7 +19,6 @@ class Gifs extends Component {
 		this.props.add_favorite(url);
 	}
 
-
 	render() {
 		const urls = this.props.urls;
 		return (
@@ -42,7 +41,6 @@ class Gifs extends Component {
 	}
 
 }
-
 
 const mapStateToProps = (state) => {
 	return {

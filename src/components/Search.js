@@ -28,10 +28,6 @@ class Search extends Component {
 		this.props.history.push('/gifs');
 	}
 
-
-	// write tests
-	// send "kitten" when empty form is submitted or api return no gifs
-
 	render() {
 		return (
 			<div>
@@ -51,7 +47,6 @@ class Search extends Component {
 		)
 	}
 }
-
 
 const mapStateToProps = (state) => {
 	return {
