@@ -33,13 +33,15 @@ class Search extends Component {
 			<div>
 				<form id='gif_search_form' onSubmit={this.handleSubmit}>
 					<div>
-						<label>What gifs would ya like to see?</label>
-						<br/>
+						<p>
+							<label>What gifs would ya like to see?</label>
+						</p>
 						<input
 							type='text'
 							name='search'
 							value={this.state.changed ? this.state.search : this.props.search_term}
 							onChange={this.handleChange}
+							className='textarea'
 						/>
 					</div>
 				</form>
