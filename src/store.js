@@ -5,22 +5,30 @@ import axios from 'axios';
 
 
 const initialState = {
+	search_term: '',
 	urls: [],
 	favorites: []
 };
 
 
 // actions
+const UPDATE_SEARCH_TERM = 'UPDATE_SEARCH_TERM';
 const PUT_URLS = 'PUT_URLS';
 const ADD_FAVORITE = 'ADD_FAVORITE';
 
 
 // action creators
+const updateSearchTerm = (search_term) => ({ type: UPDATE_SEARCH_TERM, search_term });
 const putUrls = (urls) => ({ type: PUT_URLS, urls });
 const addFavorite = (fav) => ({ type: ADD_FAVORITE, fav });
 
 
 // thunk creators
+export const dispatchSearchTerm = (search_term) => (dispatch) => {
+	dispatch(updateSearchTerm(search_term));
+	dispatchGifSearch(search_term)(dispatch);
+}
+
 export const dispatchGifSearch = (search) => (dispatch) => {
 	axios.get('https://api.giphy.com/v1/gifs/search?q=' + search + '&api_key=GZKGwdu6xlIM0iV58yFKJOFLqj0NLXFw&limit=5')
 		.then(res => res.data.data)
@@ -45,6 +53,8 @@ export const dispatchAddFavorite = (fav) => (dispatch) => {
 //reducer
 const reducer = (state = initialState, action) => {
 	switch(action.type) {
+		case UPDATE_SEARCH_TERM:
+			return Object.assign( {}, state, { search_term: action.search_term });
 		case PUT_URLS:
 			return Object.assign( {}, state, { urls: action.urls } );
 		case ADD_FAVORITE:

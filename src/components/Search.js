@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import store, { dispatchGifSearch } from '../store';
+import { connect } from 'react-redux';
+import { dispatchSearchTerm } from '../store';
 
 
 class Search extends Component {
@@ -8,6 +9,7 @@ class Search extends Component {
 		super();
 		this.state = {
 			search: '',
+			changed: false
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -15,13 +17,14 @@ class Search extends Component {
 
 	handleChange(evt) {
 		this.setState({
-			search: evt.target.value
+			search: evt.target.value,
+			changed: true
 		});
 	}
 
 	handleSubmit(evt) {
 		evt.preventDefault();
-		store.dispatch(dispatchGifSearch(this.state.search));
+		this.props.update_search_term(this.state.search);
 		this.props.history.push('/gifs');
 	}
 
@@ -40,7 +43,7 @@ class Search extends Component {
 						<input
 							type='text'
 							name='search'
-							value={this.state.search}
+							value={this.state.changed ? this.state.search : this.props.search_term}
 							onChange={this.handleChange}
 						/>
 					</div>
@@ -51,4 +54,16 @@ class Search extends Component {
 }
 
 
-export default Search;
+const mapStateToProps = (state) => {
+	return {
+		search_term: state.search_term
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		update_search_term: (search) => dispatch(dispatchSearchTerm(search))
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
