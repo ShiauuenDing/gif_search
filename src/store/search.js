@@ -37,7 +37,7 @@ const putGifUrls = (data) => {
 
 
 //reducer
-export default const reducer = (state = { search_terms: '', urls: [] }, action) => {
+export default function reducer (state = { search_terms: '', urls: [] }, action) {
 	switch(action.type) {
 		case UPDATE_SEARCH_TERM:
 			return Object.assign( {}, state, { search_term: action.search_term });

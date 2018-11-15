@@ -20,7 +20,7 @@ export const dispatchClearFavorites = () => (dispatch) => {
 
 
 //reducer
-const reducer = (state = { favorites: [] }, action) => {
+export default function reducer (state = { favorites: [] }, action) {
 	switch(action.type) {
 		case ADD_FAVORITE:
 			return checkDuplicateAndUpdate(state, action.fav);
@@ -28,5 +28,13 @@ const reducer = (state = { favorites: [] }, action) => {
 			return Object.assign( {}, state, { favorites: [] });
 		default:
 			return state;
+	}
+}
+
+const checkDuplicateAndUpdate = (state, newFav) => {
+	if(state.favorites.includes(newFav)) {
+		return state;
+	} else {
+		return Object.assign( {}, state, { favorites: [newFav, ...state.favorites] } );
 	}
 }
