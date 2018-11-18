@@ -36,7 +36,3 @@ describe('actions', () => {
 		expect(my_store.clearFavorites()).toEqual(expectedAction);
 	})
 })
-
-
-
-// TODO: Add tests for thunks.
