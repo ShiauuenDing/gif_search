@@ -51,8 +51,9 @@ class Search extends Component {
 }
 
 const mapStateToProps = (state) => {
+	console.log(state.search);
 	return {
-		search_term: state.search_term
+		search_term: state.search.search_term
 	}
 }
 

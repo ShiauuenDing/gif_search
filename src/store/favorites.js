@@ -1,4 +1,3 @@
-
 // actions
 export const ADD_FAVORITE = 'ADD_FAVORITE';
 export const CLEAR_FAVORITES = 'CLEAR_FAVORITES';
