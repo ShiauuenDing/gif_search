@@ -44,7 +44,7 @@ class Gifs extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		urls: state.urls,
+		urls: state.search.urls
 	}
 }
 

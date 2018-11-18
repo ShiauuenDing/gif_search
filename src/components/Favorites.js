@@ -38,7 +38,7 @@ class Favorites extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		favorites: state.favorites
+		favorites: state.favorites.favorites
 	}
 }
 
