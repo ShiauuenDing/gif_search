@@ -1,9 +1,9 @@
 .App {
   text-align: center;
+  background-color: #282c34;
 }
 
 .App-body {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,12 +24,12 @@
   margin: 15px;
 }
 
-.navbutton {
+/*.navbutton {
   font-size: 20px;
   margin: 40px;
   background: grey;
   border-color: silver;
-}
+}*/
 
 .textarea {
   width: 200px;
@@ -41,6 +41,40 @@
 button {
   margin: 10px;
   background-color: grey;
-  border-color: silver
-  ;
+  border-color: silver;
+}
+
+nav {
+  padding: 2em;
+  text-align: right;
+}
+
+.navWide {
+  display: none;
+}
+
+/*.navNarrow {
+  .narrowLinks {
+    display: none;
+
+    Link {
+      display: block;
+      float: left;
+      clear: left;
+    }
+  }
+}*/
+
+@media (min-width: 480px) {
+  
+  nav {
+
+    .navWide {
+      display: block;
+    }
+
+    .navNarrow {
+      display: none;
+    }
+  }
 }
