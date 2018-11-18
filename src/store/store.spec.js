@@ -1,4 +1,4 @@
-import * as my_store from '../';
+import * as my_store from './';
 
 // action creator tests
 describe('actions', () => {
