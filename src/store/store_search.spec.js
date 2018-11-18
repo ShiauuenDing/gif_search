@@ -19,20 +19,4 @@ describe('actions', () => {
 		};
 		expect(my_store.putUrls(urls)).toEqual(expectedAction);
 	})
-
-	it('adds the url of a favorite GIF', () => {
-		const fav = ['my_fav'];
-		const expectedAction = {
-			type: my_store.ADD_FAVORITE,
-			fav
-		};
-		expect(my_store.addFavorite(fav)).toEqual(expectedAction);
-	})
-
-	it('clears all favorite GIFs', () => {
-		const expectedAction = {
-			type: my_store.CLEAR_FAVORITES,
-		};
-		expect(my_store.clearFavorites()).toEqual(expectedAction);
-	})
 })

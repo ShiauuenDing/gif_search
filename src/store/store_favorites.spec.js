@@ -2,7 +2,7 @@ import * as my_store from './';
 import reducer from './favorites';
 
 describe('action creators and reducer', () => {
-	it('adds a favorite', () => {
+	it('adds the url of a favorite GIF', () => {
 		const fav = 'http://gighy.kittens1';
 		const expectedAction = {
 			type: my_store.ADD_FAVORITE,
@@ -24,7 +24,7 @@ describe('action creators and reducer', () => {
 		};
 		expect(reducer({ favorites: ['http://gighy.kittens1'] }, {
 			type: my_store.ADD_FAVORITE,
-			fav: fav
+			fav
 		})).toEqual(expectedAction);
 	})
 
