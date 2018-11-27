@@ -10,30 +10,30 @@ export const clearFavorites = () => ({ type: CLEAR_FAVORITES });
 
 // thunk creators
 export const dispatchAddFavorite = (fav) => (dispatch) => {
-	dispatch(addFavorite(fav));
+  dispatch(addFavorite(fav));
 }
 
 export const dispatchClearFavorites = () => (dispatch) => {
-	dispatch(clearFavorites());
+  dispatch(clearFavorites());
 }
 
 
 //reducer
 export default function reducer (state = { favorites: [] }, action) {
-	switch(action.type) {
-		case ADD_FAVORITE:
-			return checkDuplicateAndUpdate(state, action.fav);
-		case CLEAR_FAVORITES:
-			return Object.assign( {}, state, { favorites: [] });
-		default:
-			return state;
-	}
+  switch(action.type) {
+    case ADD_FAVORITE:
+      return checkDuplicateAndUpdate(state, action.fav);
+    case CLEAR_FAVORITES:
+      return Object.assign( {}, state, { favorites: [] });
+    default:
+      return state;
+  }
 }
 
 const checkDuplicateAndUpdate = (state, newFav) => {
-	if(state.favorites.includes(newFav)) {
-		return state;
-	} else {
-		return Object.assign( {}, state, { favorites: [newFav, ...state.favorites] } );
-	}
+  if(state.favorites.includes(newFav)) {
+    return state;
+  } else {
+    return Object.assign( {}, state, { favorites: [newFav, ...state.favorites] } );
+  }
 }
