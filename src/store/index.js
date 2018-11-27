@@ -6,7 +6,17 @@ import favorites from './favorites';
 
 const reducer = combineReducers({ search, favorites });
 const logger = createLogger();
-const store = createStore(reducer, {}, applyMiddleware(thunk, logger));
+
+let initState = {};
+const persistedState = localStorage.getItem('reduxState');
+if (persistedState) {
+  initState = JSON.parse(persistedState);
+}
+
+const store = createStore(reducer, initState, applyMiddleware(thunk, logger));
+store.subscribe(() => {
+  localStorage.setItem('reduxState', JSON.stringify(store.getState()))
+});
 
 export default store;
 
