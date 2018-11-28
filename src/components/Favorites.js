@@ -17,22 +17,30 @@ class Favorites extends Component {
 
   render() {
     const favs = this.props.favorites;
-    return (
-      <div>
+    if(favs.length) {
+      return (
         <div>
-          <button className='navbutton' onClick={this.handleClick}>Clear favorites</button>
+          <div>
+            <button className='navbutton' onClick={this.handleClick}>Clear favorites</button>
+          </div>
+          <div className='box'>
+          {
+            favs.map(fav => (
+              <div key={fav} className='gifbox'>
+                <img src={fav} alt='' />
+              </div>
+            ))
+          }
+          </div>
         </div>
-        <div className='box'>
-        {
-          favs.map(fav => (
-            <div key={fav} className='gifbox'>
-              <img src={fav} alt='' />
-            </div>
-          ))
-        }
+      )
+    } else {
+      return (
+        <div>
+          You have no favorites at this moment...
         </div>
-      </div>
-    )
+      )
+    }
   }
 }
 

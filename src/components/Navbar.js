@@ -6,8 +6,9 @@ function Navbar () {
   return (
     <nav>
       <div className='navLinks'>
-          <Link to='/search'>new search</Link> | 
-          <Link to='/favorites'>favorites</Link>
+          <Link to='/search' className='link'>new search</Link> |
+          <Link to='/favorites' className='link'> favorites</Link>
+
       </div>
     </nav>
   )
