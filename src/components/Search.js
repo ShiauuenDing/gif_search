@@ -9,7 +9,6 @@ class Search extends Component {
     super();
     this.state = {
       search: ''
-      // changed: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,13 +17,11 @@ class Search extends Component {
   handleChange(evt) {
     this.setState({
       search: evt.target.value
-      // changed: true
     });
   }
 
   handleSubmit(evt) {
     evt.preventDefault();
-    // this.props.update_search_term(this.state.changed ? this.state.search : this.props.search_term);
     this.props.update_search_term(this.state.search);
     this.props.history.push('/gifs');
   }
@@ -40,7 +37,6 @@ class Search extends Component {
             <input
               type='text'
               name='search'
-              // value={this.state.changed ? this.state.search : this.props.search_term}
               value={this.state.search}
               onChange={this.handleChange}
               className='textarea'

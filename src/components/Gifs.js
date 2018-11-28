@@ -23,15 +23,11 @@ class Gifs extends Component {
     const urls = this.props.urls;
     return (
       <div>
-        {/*<div>
-          <button className='navbutton' onClick={this.setRedirect}>Favorites</button>
-        </div>*/}
         <div className='box'>
         {
           urls.map(url => (
             <div key={url} className='gifbox'>
-              <img src={url} alt='' />
-              <button onClick={this.handleClick.bind(this, url)}>Add</button>
+              <button onClick={this.handleClick.bind(this, url)}><img src={url} alt='' /></button>
             </div>
           ))
         }

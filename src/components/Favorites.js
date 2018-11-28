@@ -37,7 +37,7 @@ class Favorites extends Component {
     } else {
       return (
         <div>
-          You have no favorites at this moment...
+          Add to favorites by clicking on Gifs
         </div>
       )
     }

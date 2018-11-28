@@ -14,15 +14,12 @@
 
 .box {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
   flex-flow: row wrap;
 }
 
 .gifbox {
   margin: 15px;
 }
-
 
 .textarea {
   width: calc(200px + 10vmin);
@@ -31,19 +28,23 @@
   background-color: lightgrey;
 }
 
-
 .link {
-  color: darkblue;
+  color: purple;
 }
 
 .navLinks {
-  color: darkblue;
+  color: purple;
+}
+
+.navbutton {
+  color: grey;
+  font-size: calc(5px + 2vmin);
+  border: none;
 }
 
 button {
-  margin: 10px;
-  background-color: grey;
-  border-color: silver;
+  background-color: #282c34;
+  border: none;
 }
 
 nav {

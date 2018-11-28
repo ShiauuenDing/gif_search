@@ -21,19 +21,10 @@ export const dispatchGifSearch = (search) => (dispatch) => {
   axios.get('https://api.giphy.com/v1/gifs/search?q=' + search + '&api_key=GZKGwdu6xlIM0iV58yFKJOFLqj0NLXFw&limit=10')
     .then(res => res.data.data)
     .then(gifsData => {
-      // const gifUrls = putGifUrls(gifsData);
       const gifUrls = gifsData.map(d => d.images.original.url);
       dispatch(putUrls(gifUrls));
     })
 }
-
-// const putGifUrls = (data) => {
-//   return data.map(d => d.images.fixed_height.url).map(url => {
-//       // extract usable url info
-//       let i = url.indexOf('?');
-//       return url.slice(0, i);
-//     });
-// }
 
 
 //reducer
