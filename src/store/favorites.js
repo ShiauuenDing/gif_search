@@ -1,3 +1,6 @@
+import { favesRef } from '../config/firebase';
+
+
 // actions
 export const ADD_FAVORITE = 'ADD_FAVORITE';
 export const CLEAR_FAVORITES = 'CLEAR_FAVORITES';
@@ -9,8 +12,13 @@ export const clearFavorites = () => ({ type: CLEAR_FAVORITES });
 
 
 // thunk creators
+// export const dispatchAddFavorite = (fav) => (dispatch) => {
+//   dispatch(addFavorite(fav));
+// }
 export const dispatchAddFavorite = (fav) => (dispatch) => {
-  dispatch(addFavorite(fav));
+  favesRef.on('value', snapshort => {
+    dispatch(addFavorite(fav));
+  })
 }
 
 export const dispatchClearFavorites = () => (dispatch) => {
