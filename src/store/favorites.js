@@ -15,7 +15,6 @@ export const fetchFavorites = () => ({ type: FETCH_FAVORITES });
 
 // thunk creators
 export const dispatchAddFavorite = (fave) => (dispatch) => {
-  favesRef.push().set(fave);
   dispatch(addFavorite(fave));
 }
 
@@ -52,6 +51,7 @@ const checkDuplicateAndUpdate = (state, newFave) => {
   if(state.favorites.includes(newFave)) {
     return state;
   } else {
+    favesRef.push().set(newFave);
     return Object.assign( {}, state, { favorites: [newFave, ...state.favorites] } );
   }
 }
