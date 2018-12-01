@@ -3,12 +3,12 @@ import reducer from './favorites';
 
 describe('action creators and reducer', () => {
   it('adds the url of a favorite GIF', () => {
-    const fav = 'http://gighy.kittens1';
+    const fave = 'http://gighy.kittens1';
     const expectedAction = {
       type: my_store.ADD_FAVORITE,
-      fav
+      fave
     };
-    expect(my_store.addFavorite(fav)).toEqual(expectedAction);
+    expect(my_store.addFavorite(fave)).toEqual(expectedAction);
   })
 
   it('returns the initial state', () => {
@@ -18,13 +18,13 @@ describe('action creators and reducer', () => {
   })
 
   it('updates the list of favorites', () => {
-    const fav = 'http://gighy.kittens2';
+    const fave = 'http://gighy.kittens2';
     const expectedAction = {
       favorites: ['http://gighy.kittens2', 'http://gighy.kittens1']
     };
     expect(reducer({ favorites: ['http://gighy.kittens1'] }, {
       type: my_store.ADD_FAVORITE,
-      fav
+      fave
     })).toEqual(expectedAction);
   })
 
