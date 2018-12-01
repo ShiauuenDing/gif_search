@@ -46,7 +46,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    add_favorite: (fav) => dispatch(dispatchAddFavorite(fav))
+    add_favorite: (fave) => dispatch(dispatchAddFavorite(fave))
   }
 }
 
